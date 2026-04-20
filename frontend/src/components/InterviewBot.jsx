@@ -16,7 +16,7 @@ export default function InterviewBot({ jobTitle, candidateName }) {
     setStarted(true)
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:5000/api/interview/chat', {
+      const res = await fetch('https://resume-analyzer-abdulsalam.vercel.app/api/interview/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -41,7 +41,7 @@ export default function InterviewBot({ jobTitle, candidateName }) {
     setInput('')
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:5000/api/interview/chat', {
+      const res = await fetch('https://resume-analyzer-abdulsalam.vercel.app/api/interview/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -62,7 +62,6 @@ export default function InterviewBot({ jobTitle, candidateName }) {
 
   return (
     <div>
-      {/* Floating Button */}
       <button onClick={() => setOpen(!open)} style={{
         position: 'fixed', bottom: '30px', right: '30px',
         width: '60px', height: '60px', borderRadius: '50%',
@@ -73,7 +72,6 @@ export default function InterviewBot({ jobTitle, candidateName }) {
         {open ? '✕' : '🤖'}
       </button>
 
-      {/* Chat Window */}
       {open && (
         <div style={{
           position: 'fixed', bottom: '100px', right: '30px',
@@ -82,8 +80,6 @@ export default function InterviewBot({ jobTitle, candidateName }) {
           display: 'flex', flexDirection: 'column', zIndex: 9998,
           boxShadow: '0 20px 60px rgba(0,0,0,0.6)', overflow: 'hidden'
         }}>
-
-          {/* Header */}
           <div style={{
             background: '#1f2937', padding: '14px 16px',
             display: 'flex', alignItems: 'center',
@@ -103,7 +99,6 @@ export default function InterviewBot({ jobTitle, candidateName }) {
             }}>🔄</button>
           </div>
 
-          {/* Messages */}
           <div style={{
             flex: 1, overflowY: 'auto', padding: '16px',
             display: 'flex', flexDirection: 'column', gap: '12px'
@@ -165,7 +160,6 @@ export default function InterviewBot({ jobTitle, candidateName }) {
             )}
           </div>
 
-          {/* Input */}
           {started && (
             <div style={{
               padding: '12px', borderTop: '1px solid #1f2937',

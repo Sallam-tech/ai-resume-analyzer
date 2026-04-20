@@ -85,7 +85,7 @@ export default function ResumeAnalyzer({ onJobTitle, onCandidateName }) {
       formData.append('experience', experience)
 
       setLoadingStep(2)
-      const response = await fetch('http://localhost:5000/api/upload/pdf', {
+      const response = await fetch('https://resume-analyzer-abdulsalam.vercel.app/api/upload/pdf', {
         method: 'POST',
         body: formData,
       })
