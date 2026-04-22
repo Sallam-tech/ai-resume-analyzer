@@ -2,7 +2,6 @@ import { useState, useRef } from 'react'
 import ResultCard from './ResultCard'
 import ScoreCircle from './ScoreCircle'
 
-// ✅ DEMO DATA - works without internet or backend
 const DEMO_DATA = {
   candidateName: 'AbdulSalam',
   jobTitle: 'Software Engineer',
@@ -85,7 +84,7 @@ export default function ResumeAnalyzer({ onJobTitle, onCandidateName }) {
       formData.append('experience', experience)
 
       setLoadingStep(2)
-      const response = await fetch('https://resume-analyzer-abdulsalam.vercel.app/api/upload/pdf', {
+      const response = await fetch('http://localhost:5000/api/upload/pdf', {
         method: 'POST',
         body: formData,
       })
@@ -105,7 +104,6 @@ export default function ResumeAnalyzer({ onJobTitle, onCandidateName }) {
     }
   }
 
-  // ✅ DEMO MODE - instant results, no backend needed
   const handleDemo = () => {
     setIsDemoMode(true)
     setLoading(true)
@@ -293,7 +291,7 @@ export default function ResumeAnalyzer({ onJobTitle, onCandidateName }) {
           {error && <p className="error-text">⚠️ {error}</p>}
 
           <button className="analyze-btn" onClick={handleAnalyze} disabled={loading}>
-            🚀 Analyze Resume
+              Analyze Resume
           </button>
 
           <button className="demo-btn" onClick={handleDemo} disabled={loading}>
@@ -302,7 +300,6 @@ export default function ResumeAnalyzer({ onJobTitle, onCandidateName }) {
         </div>
       )}
 
-      {/* LOADING STEPS */}
       {loading && (
         <div className="loading">
           <div className="loading-steps">
@@ -326,7 +323,6 @@ export default function ResumeAnalyzer({ onJobTitle, onCandidateName }) {
         </div>
       )}
 
-      {/* RESULTS */}
       {result && !loading && (
         <div className="results">
           <div className="result-header">
@@ -432,13 +428,11 @@ export default function ResumeAnalyzer({ onJobTitle, onCandidateName }) {
         </div>
       )}
 
-      {/* ✅ FOOTER */}
       <div className="footer">
         <p className="footer-title">  AI Resume Analyzer</p>
         <p className="footer-sub">Designed & Developed by <span className="footer-name">AbdulSalam</span></p>
         <p className="footer-tech">Built with React • Node.js • OpenRouter AI</p>
       </div>
-
     </div>
   )
 }
